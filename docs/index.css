@@ -5,9 +5,7 @@
   --cta-bright: #ff3366; 
   --offer-bg: #ff385c; 
   --product-shadow: rgba(0,0,0,0.08);
-  /* Typography 1: Modern Sans-Serif */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  /* Typography 2: Classic Serif */
   --font-serif: "Georgia", "Times New Roman", serif;
 }
 
@@ -19,9 +17,8 @@
 }
 
 html, body {
-  height: 100vh;
   width: 100vw;
-  overflow: hidden; /* Prevent any scrolling */
+  overflow-x: hidden;
   background-color: var(--bg-white);
   font-family: var(--font-sans);
   color: var(--text-dark);
@@ -35,16 +32,16 @@ body {
 
 /* 3. MAIN CONTAINER */
 .hero {
-  width: 100%;
-  max-width: 1200px;
-  height: 100vh;
-  padding: 2vh 5vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Keeps top/mid/bottom apart */
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2vh 5vw;
 }
 
-/* 4. TOP ROW (Fixed Height) */
+/* 4. TOP ROW */
 .top-row {
   text-align: center;
   flex-shrink: 0;
@@ -61,19 +58,18 @@ body {
 
 .product-name {
   font-size: clamp(28px, 5vh, 56px);
-  font-weight: 800; /* Extra bold version of typography 1 */
+  font-weight: 800;
   letter-spacing: -1px;
 }
 
-/* 5. MIDDLE SECTION (Responsive Height) */
+/* 5. MIDDLE SECTION */
 .product-image-container {
   position: relative;
-  flex: 1; /* Takes exactly the remaining space in the middle */
-  min-height: 0; /* Important: Allows image to shrink to stay in frame */
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  flex: 0;
+  margin-bottom: 20px;
 }
 
 .product-image {
@@ -112,20 +108,19 @@ body {
   font-weight: 900;
 }
 
-/* 6. BOTTOM ROW (Fixed Height) */
+/* 6. BOTTOM ROW */
 .bottom-row {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
-  padding: 20px 0;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .price-container {
   display: flex;
   align-items: baseline;
   gap: 15px;
-  
 }
 
 .original-price {
@@ -143,7 +138,7 @@ body {
 }
 
 .benefit {
-  font-family: var(--font-serif); /* Typography Type 2 */
+  font-family: var(--font-serif);
   font-size: clamp(16px, 2.2vh, 22px);
   font-style: italic;
   margin-bottom: 5px;
@@ -163,7 +158,7 @@ body {
   text-transform: uppercase;
 }
 
-/* 7. BRIGHT CTA BUTTON */
+/* 7. CTA BUTTON */
 .cta-button {
   background-color: var(--cta-bright);
   color: #fff;
@@ -176,16 +171,39 @@ body {
   box-shadow: 0 10px 25px rgba(255, 51, 102, 0.4);
 }
 
-/* 8. MOBILE RESPONSIVE FIX */
+/* 8. MOBILE RESPONSIVE FIX - bring everything closer */
 @media (max-width: 767px) {
-  .hero { padding: 15px; }
-  .bottom-row { 
-    flex-direction: column; 
-    gap: 15px; 
-    text-align: center; 
+  .hero {
+    height: auto;
+    justify-content: flex-start;
+    padding-bottom: 5px;
   }
-  .benefit-group { align-items: center; }
-  .price-container { justify-content: center; }
-  .cta-button { width: 100%; text-align: center; }
-  .offer-badge { right: 5%; top: 0; }
+
+  .product-image-container {
+    margin-bottom: 2px; /* minimal gap under image */
+  }
+
+  .bottom-row {
+    margin-top: 0;
+    gap: 2px;
+    align-items: center;
+  }
+
+  .price-container {
+    gap: 5px;
+  }
+
+  .trust-tags {
+    gap: 3px;
+  }
+
+  .cta-button {
+    padding: 1vh 25px;
+    font-size: 15px;
+  }
+
+  .benefit {
+    font-size: clamp(13px, 1.8vh, 16px);
+    margin-bottom: 2px;
+  }
 }
